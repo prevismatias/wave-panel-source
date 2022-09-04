@@ -1,4 +1,5 @@
 # wave source
+##WAVE IS NOT A THING ANYMORE DO NOT GET SCAMMED
 
 i decided to leak this source so that the owner will stop using wave to scam
 
@@ -16,4 +17,6 @@ the panel source was made in 1-2 weeks and is horrible. It's buggy, unoptimised,
 1. drag safeguard files into the sg folder
 2. setup strings/links in misc.cs
 3. a: install packages that are needed 
-3. b: deleted the packages folder so smart people are only able to use the source, if you're desperate enough you can fix this source in 10 minutes
+(deleted the packages folder so smart people are only able to use the source, if you're desperate enough you can fix this source in 10 minutes)
+
+#WAVE IS NOT A THING ANYMORE DO NOT GET SCAMMED
