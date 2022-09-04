@@ -4,7 +4,7 @@ i decided to leak this source so that the owner will stop using wave to scam
 
 the popularity of wave has blown up thanks to two youtube vids i made and he uses the popularity to lure coustomers
 
--
+-----
 
 Wave used apis, and was very inconsistant. At least 100-200 people complained and complained. Wave itself was
 technically a scam.
