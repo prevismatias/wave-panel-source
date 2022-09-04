@@ -1,0 +1,90 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wave"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="wave.restoreWindow"
+        mc:Ignorable="d"
+        Title="retard window" Height="320" Width="318.2" ResizeMode="NoResize" WindowStyle="None" Background="#FF232323" WindowStartupLocation="CenterScreen">
+    <Grid>
+
+        <Rectangle Fill="#FF1E1E1E" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="317" MouseDown="Rectangle_MouseDown" Margin="1,1,0,0"/>
+        <Image HorizontalAlignment="Left" Height="12" Margin="10,12,0,0" VerticalAlignment="Top" Width="20" Source="deps/logo.png" RenderTransformOrigin="0.878,1.217"/>
+        <Button x:Name="exitRestore" HorizontalAlignment="Left" Margin="268,1,0,0" VerticalAlignment="Top" Width="49" Height="33" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Click="exitRestore_Click">
+            <materialDesign:PackIcon Kind="Close" Height="19" Width="19"/>
+        </Button>
+        <Button x:Name="minimizeRestore" HorizontalAlignment="Left" Margin="219,0,0,0" VerticalAlignment="Top" Width="49" Height="34" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minimizeRestore_Click">
+            <materialDesign:PackIcon Kind="WindowMinimize" Height="19" Width="19"/>
+        </Button>
+        <Border BorderThickness="1" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="318">
+            <Border.BorderBrush>
+                <ImageBrush ImageSource="deps/fade.png"/>
+            </Border.BorderBrush>
+            <Grid Margin="0.2,34.2,-0.4,0.2">
+                <TabControl HorizontalAlignment="Left" Height="386" VerticalAlignment="Top" Width="317" Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
+  TabStripPlacement="Top" Margin="0,-2,0,0">
+                    <TabItem Height="40" Width="159" FontFamily="Calibri Light">
+                        <TabItem.Header>
+                            <StackPanel
+        Height="auto"
+        Width="auto">
+                                <materialDesign:PackIcon
+          Kind="CoinsCloseOutline"
+          Width="15"
+          Height="15"
+          HorizontalAlignment="Center" />
+                                <TextBlock
+          Text="Get Reset Token"
+          HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <Grid Background="#FF232323" Margin="0,0,-0.2,99.6">
+                            <Button Content="SEND EMAIL
+" HorizontalAlignment="Left" Margin="72,107,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" Foreground="#FFFF" Click="Button_Click">
+                                <Button.BorderBrush>
+                                    <ImageBrush ImageSource="deps/fade.png"/>
+                                </Button.BorderBrush>
+                            </Button>
+                            <Button x:Name="openLogin" Content="login" HorizontalAlignment="Left" Margin="115,149,0,0" VerticalAlignment="Top" Width="75" Height="22" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" FontFamily="Calibri Light" Click="openLogin_Click"/>
+                            <TextBox x:Name="usernamerecText" materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="67,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Foreground="White" FontSize="14" FontFamily="Calibri Light" MaxLines="1"/>
+                            <materialDesign:PackIcon Kind="User"  HorizontalAlignment="Left" Margin="44,58,0,0" VerticalAlignment="Top" Foreground="White"/>
+                            <Label Content="*you need a reset token in order to reset your password. &#xD;&#xA;You can get your register token here" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,196,0,0" Width="297" Height="40"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem  Height="40" Width="157" FontFamily="Calibri Light">
+                        <TabItem.Header>
+                            <StackPanel
+        Height="auto"
+        Width="auto">
+                                <materialDesign:PackIcon
+          Kind="ForgotPassword"
+          Width="15"
+          Height="15"
+          HorizontalAlignment="Center" />
+                                <TextBlock
+          Text="Reset Password"
+          HorizontalAlignment="Center" />
+                            </StackPanel>
+                        </TabItem.Header>
+                        <Grid Background="#FF232323" Margin="0,0,-0.2,99.6">
+                            <TextBox x:Name="usernameresText" materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="69,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Foreground="White" FontSize="14" FontFamily="Calibri Light" MaxLines="1"/>
+                            <materialDesign:PackIcon Kind="User"  HorizontalAlignment="Left" Margin="46,45,0,0" VerticalAlignment="Top" Foreground="White"/>
+                            <PasswordBox x:Name="passwordresText" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" HorizontalAlignment="Left" Margin="69,82,0,0" VerticalAlignment="Top" Width="205" Height="40" Foreground="White" FontFamily="Calibri Light" FontSize="14"/>
+                            <materialDesign:PackIcon Kind="Key" HorizontalAlignment="Left" Margin="46,100,0,0" VerticalAlignment="Top" Foreground="White"/>
+                            <TextBox x:Name="tokenresText" materialDesign:HintAssist.Hint="Token" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="69,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Foreground="White" FontSize="14" FontFamily="Calibri Light" MaxLines="1"/>
+                            <materialDesign:PackIcon Kind="Coins" HorizontalAlignment="Left" Margin="46,146,0,0" VerticalAlignment="Top" Foreground="White"/>
+                            <Button x:Name="resBtn" Content="RECOVER ACCOUNT" HorizontalAlignment="Left" Margin="74,190,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" Foreground="White" Click="Button3_Click" FontFamily="Calibri Light">
+                                <Button.BorderBrush>
+                                    <ImageBrush ImageSource="deps/fade.png"/>
+                                </Button.BorderBrush>
+                            </Button>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Border>
+        <Label Content="made by matias" HorizontalAlignment="Left" Margin="250,302,-51.6,0" VerticalAlignment="Top" Width="120" Foreground="White" FontFamily="Candara Light" FontSize="7" FontWeight="Bold" RenderTransformOrigin="0.42,0.429"/>
+
+    </Grid>
+</Window>

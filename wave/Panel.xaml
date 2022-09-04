@@ -1,0 +1,819 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wave"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="wave.Panel"
+        mc:Ignorable="d"
+        Title="WAVE - Panel" Height="470" Width="800" WindowStyle="None" ResizeMode="NoResize" Background="#FF232323" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Border x:Name="border" BorderThickness="1" HorizontalAlignment="Left" Height="470" VerticalAlignment="Top" Width="800">
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Rectangle Fill="#FF1E1E1E" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="798" MouseDown="Rectangle_MouseDown"/>
+            <Image HorizontalAlignment="Left" Height="12" Margin="10,12,0,0" VerticalAlignment="Top" Width="20" Source="deps/logo.png" RenderTransformOrigin="0.878,1.217"/>
+            <Label x:Name="welcomeText" Content="Welcome, user" HorizontalAlignment="Left" Margin="35,7,0,0" VerticalAlignment="Top" Width="184" FontFamily="Calibri Light" MouseDown="welcomeText_MouseDown"/>
+
+            <Button x:Name="exitPanel" Margin="749,0,0.4,0" VerticalAlignment="Top" Height="34" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}" Click="exitPanel_Click">
+                <materialDesign:PackIcon Kind="Close" Height="19" Width="19"/>
+            </Button>
+            <Button x:Name="minimizePanel" Margin="699,0,49.4,0" VerticalAlignment="Top" Height="34" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="White" FontFamily="Calibri Light" Click="minimizePanel_Click">
+                <materialDesign:PackIcon Kind="WindowMinimize" Height="19" Width="19"/>
+            </Button>
+            <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}" HorizontalAlignment="Left" Height="435" VerticalAlignment="Top" Width="798" Margin="0,34,0,-0.2" Foreground="#DD000000">
+                <TabItem Foreground="#FFC8C8C8">
+                    <TabItem.Header>
+                        <StackPanel
+        Height="auto"
+        Width="auto">
+                            <materialDesign:PackIcon
+          Kind="House"
+          Width="24"
+          Height="24"
+          HorizontalAlignment="Center" >
+                                <materialDesign:PackIcon.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                        <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </materialDesign:PackIcon.Foreground>
+                            </materialDesign:PackIcon>
+                            <TextBlock
+          Text="Home"
+          HorizontalAlignment="Center" Foreground="#FFC8C8C8" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid Background="#FF232323">
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.7}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="321" Width="237" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="321" VerticalAlignment="Top" Width="237" Margin="0,0,-0.2,-0.2">
+                                    <Label Content="PROFILE" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16"/>
+                                    <materialDesign:PackIcon Kind="User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+                                    <Ellipse HorizontalAlignment="Left" Height="125" Stroke="Black" VerticalAlignment="Top" Width="125" Margin="56,51,0,0" Fill="#FF232323"/>
+                                    <Ellipse HorizontalAlignment="Left" Height="125" Stroke="Black" VerticalAlignment="Top" Width="125" Margin="56,51,0,0">
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="deps/user.png" Stretch="Uniform"/>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <Label x:Name="clientnameLabel" Content="username" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="58,184,0,0" Width="120" HorizontalContentAlignment="Center" FontFamily="Calibri Light" FontWeight="Bold" FontSize="16"/>
+                                    <Label x:Name="planexpirationLabel" Content="Plan Expiration: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,224,0,0" FontFamily="Calibri Light" Width="193"/>
+                                    <materialDesign:PackIcon Kind="Calendar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,226,0,0" Foreground="White"/>
+                                    <Label x:Name="levelLabel" Content="Rank: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,251,0,0" Width="193" FontFamily="Calibri Light"/>
+                                    <materialDesign:PackIcon Kind="Rank" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,253,0,0" Foreground="White"/>
+                                    <materialDesign:PackIcon Kind="Clock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,281,0,0" Foreground="White"/>
+                                    <Label x:Name="maxtimeLabel" Content="Max Time: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,278,0,0" Width="193" FontFamily="Calibri Light"/>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.9}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="252,10,0,0" VerticalAlignment="Top" Height="86" Width="464" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="416" VerticalAlignment="Top" Width="464" Margin="0,0,0,-0.8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="95*"/>
+                                        <ColumnDefinition Width="369*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="STATS" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16"/>
+                                    <materialDesign:PackIcon Kind="Graph" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+                                    <Label x:Name="clientsLabel" Content="Clients: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,36,0,0" Width="120" FontFamily="Calibri Light" Grid.ColumnSpan="2" FontSize="16"/>
+                                    <materialDesign:PackIcon Kind="People" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,43,0,0" Foreground="White"/>
+                                    <Label x:Name="serversLabel" Content="Servers: " HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,36,173,0" Width="120" FontFamily="Calibri Light" Grid.Column="1" FontSize="16"/>
+                                    <materialDesign:PackIcon Kind="Server" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="59.8,43,0,0" Foreground="White" Grid.Column="1"/>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.8}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="10,336,0,0" VerticalAlignment="Top" Height="89" Width="237" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="237" Margin="0,0,-0.2,-10.2">
+                                    <Label Content="MISC" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16"/>
+                                    <materialDesign:PackIcon Kind="Package" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+                                    <Button Content="SHOW MOTD" HorizontalAlignment="Left" VerticalAlignment="Top" Width="217" Margin="10,38,0,0" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" Click="Button_Click_1">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.0}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="252,101,0,0" VerticalAlignment="Top" Height="324" Width="464" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="324" VerticalAlignment="Top" Width="464">
+                                    <Label Content="FAQ" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16"/>
+                                    <materialDesign:PackIcon Kind="Faq" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+                                    <StackPanel Grid.ColumnSpan="2" Margin="10,38,10,0">
+                                        <Expander HorizontalAlignment="Stretch" Header="What are the home methods?">
+                                            <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,24,16">
+                                                <TextBlock Text="Methods like UDP, UDPGENERIC, HOME-KILL, and TCPSYN are viable home" />
+                                                <TextBlock Text="methods."/>
+                                            </StackPanel>
+                                        </Expander>
+                                        <Border/>
+                                        <Expander HorizontalAlignment="Stretch" Header="Game Help">
+                                            <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,24,16">
+                                                <TextBlock Text="UDP Methods: Roblox, R6, Rust"/>
+                                                <TextBlock Text="TCP Methods: Minecraft, Fortnite"/>
+                                            </StackPanel>
+                                        </Expander>
+                                        <Border/>
+                                        <Expander HorizontalAlignment="Stretch" Header="Some features aren't working properly!">
+                                            <StackPanel Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}" Margin="24,8,24,16">
+                                                <TextBlock Text="V2 is still in testing, please notify the admins any bugs or problems by " />
+                                                <TextBlock Text="opening a ticket on our discord server! (invite found in discord tab)"/>
+                                            </StackPanel>
+                                        </Expander>
+                                    </StackPanel>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="95*"/>
+                                        <ColumnDefinition Width="369*"/>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:Snackbar x:Name="motdSnack" HorizontalAlignment="Stretch" Height="55" VerticalAlignment="Top" Margin="79,381,79.4,-0.8" Background="#7F383838" Foreground="White" IsActive="False" HorizontalContentAlignment="Center">
+                            <materialDesign:SnackbarMessage Content="Nothing for today!" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </materialDesign:Snackbar>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+        Height="auto"
+        Width="auto">
+                            <materialDesign:PackIcon
+          Kind="Signal"
+          Width="24"
+          Height="24"
+          HorizontalAlignment="Center" >
+                                <materialDesign:PackIcon.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                        <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </materialDesign:PackIcon.Foreground>
+                                <materialDesign:PackIcon.Background>
+                                    <ImageBrush/>
+                                </materialDesign:PackIcon.Background>
+                            </materialDesign:PackIcon>
+                            <TextBlock
+          Text="Stresser"
+          HorizontalAlignment="Center" Foreground="#FFC8C8C8" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid Background="#FF232323">
+
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.0}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="492,10,0,0" VerticalAlignment="Top" Height="241" Width="224" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="241" VerticalAlignment="Top" Width="224" Margin="0,0,0,-0.2">
+                                    <Label Content="IP STRESSER" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,10,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16"/>
+                                    <materialDesign:PackIcon Kind="Signal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,14,0,0" Foreground="White"/>
+                                    <TextBox x:Name="ipText" materialDesign:HintAssist.Hint="Target" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="10,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Foreground="White" FontSize="14" FontFamily="Calibri Light" MaxLines="1" CaretBrush="White" SelectionBrush="White"/>
+                                    <TextBox x:Name="timeText" materialDesign:HintAssist.Hint="Time" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Foreground="White" FontSize="14" FontFamily="Calibri Light" MaxLines="1" MaxLength="5" SelectionBrush="White" CaretBrush="White"/>
+                                    <TextBox x:Name="portText" materialDesign:HintAssist.Hint="Port" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="120,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" Foreground="White" FontSize="14" FontFamily="Calibri Light" MaxLines="1" MaxLength="5" CaretBrush="White" SelectionBrush="White"/>
+                                    <ComboBox x:Name="methodText" materialDesign:HintAssist.Hint="Method" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Margin="10,170,0,0" Foreground="White">
+                                    </ComboBox>
+                                    <Button x:Name="atkBtn" Content="SEND ATTACK" HorizontalAlignment="Left" VerticalAlignment="Top" Width="204" Margin="10,200,0,0" Background="{x:Null}" Foreground="White" FontFamily="Calibri Light" FontWeight="Normal" Click="atkBtn_Click">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                    <ToggleButton x:Name="togglemethodsToggleButton"
+  Style="{StaticResource MaterialDesignSwitchToggleButton}"
+  ToolTip="Switch Between Layer4 and Layer7 Methods" Margin="140,165,10,51" Checked="togglemethodsToggleButton_Checked" Unchecked="togglemethodsToggleButton_Unchecked" Background="White">
+                                        <materialDesign:PackIcon
+    Kind="NumericFour"
+    RenderTransformOrigin=".5,.5" Height="22" Width="26">
+                                            <materialDesign:PackIcon.Foreground>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <LinearGradientBrush.RelativeTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                            <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                            <TranslateTransform/>
+                                                        </TransformGroup>
+                                                    </LinearGradientBrush.RelativeTransform>
+                                                    <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                    <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </materialDesign:PackIcon.Foreground>
+                                            <materialDesign:PackIcon.RenderTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform/>
+                                                    <SkewTransform/>
+                                                    <RotateTransform Angle="0"/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </materialDesign:PackIcon.RenderTransform>
+                                        </materialDesign:PackIcon>
+                                        <materialDesign:ToggleButtonAssist.OnContent>
+                                            <materialDesign:PackIcon
+      Kind="NumericSeven">
+                                                <materialDesign:PackIcon.Foreground>
+                                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                        <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                        <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </materialDesign:PackIcon.Foreground>
+                                            </materialDesign:PackIcon>
+                                        </materialDesign:ToggleButtonAssist.OnContent>
+                                    </ToggleButton>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.1}">
+                            <materialDesign:Card HorizontalAlignment="Left" VerticalAlignment="Top" Margin="492,256,0,0" Height="169" Width="224" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="170" Margin="0,0,0,-1.2" VerticalAlignment="Top" Width="224">
+                                    <Label Content="TOOLS" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,10,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16"/>
+                                    <materialDesign:PackIcon Kind="Wrench" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,14,0,0" Foreground="White"/>
+                                    <Button x:Name="geoipBtn" Content="GEO IP" HorizontalAlignment="Left" VerticalAlignment="Top" Width="204" Margin="10,131,0,0" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" Click="geoipBtn_Click" Height="26">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                    <TextBox x:Name="toolipText" materialDesign:HintAssist.Hint="IP Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="10,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" Foreground="White" FontSize="14" FontFamily="Calibri Light" MaxLines="1" MaxLength="15"/>
+                                    <Button x:Name="portscanBtn" Content="PORT SCAN" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="204" Margin="10,100,0,0" Height="26" Background="{x:Null}" FontFamily="Calibri Light" Click="portscanBtn_Click">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.9}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="270" Width="477" Foreground="White" Background="#FF2B2B2B">
+                                <Grid>
+                                    <DataGrid x:Name="logGrid" HorizontalAlignment="Left" Height="250" Margin="10,10,0,0" VerticalAlignment="Top" Width="457" FontFamily="Calibri Light" Foreground="White">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="IP" FontFamily="Calibri Light" Width="100" Foreground="White" Binding="{Binding IP, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Port" FontFamily="Calibri Light" Width="75" Foreground="White" Binding="{Binding Port, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Method" FontFamily="Calibri Light" Width="100" Foreground="White" Binding="{Binding Method, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Time" FontFamily="Calibri Light" Width="80" Foreground="White" Binding="{Binding Time, Mode=OneWay}"/>
+                                            <DataGridTextColumn Header="Sent" FontFamily="Calibri Light" Width="170" Foreground="White" Binding="{Binding Sent, Mode=OneWay}"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <ProgressBar x:Name="cooldownBar" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="457" Margin="10,250,0,0" ValueChanged="cooldownBar_ValueChanged" Foreground="#747cec" Visibility="Hidden">
+                                        <ProgressBar.Background>
+                                            <SolidColorBrush Color="#FF646464"/>
+                                        </ProgressBar.Background>
+                                        <ProgressBar.BorderBrush>
+                                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.WindowFrameColorKey}}"/>
+                                        </ProgressBar.BorderBrush>
+                                    </ProgressBar>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.8}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top" Height="140" Width="187" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="187">
+                                    <Label Content="MISC " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16"/>
+                                    <materialDesign:PackIcon Kind="Package" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+                                    <Button x:Name="clearattackhistoryButton" Content="CLEAR ATTACK HISTORY" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Margin="10,38,0,0" Background="{x:Null}" Foreground="White" Height="26" FontFamily="Calibri Light" Click="clearattackhistoryButton_Click">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                    <Button x:Name="rainbowpingButton" Content="RAINBOW PING" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Margin="10,100,0,0" Height="26" Foreground="White" Background="{x:Null}" FontFamily="Calibri Light" Click="rainbowpingButton_Click">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                    <Button x:Name="clearattacktextboxesButton" Content="CLEAR TEXT BOXES" HorizontalAlignment="Left" VerticalAlignment="Top" Width="168" Margin="10,69,0,0" Background="{x:Null}" Foreground="White" Height="26" FontFamily="Calibri Light" Click="clearattacktextboxesButton_Click">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.95}" Margin="-1,0,0.4,0.2">
+                            <materialDesign:Card HorizontalAlignment="Left" VerticalAlignment="Top" Margin="202,285,0,0" Height="140" Width="285" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="140" VerticalAlignment="Top" Width="285" Margin="0,0,-0.2,0">
+                                    <Label Content="PING " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16" Width="70"/>
+                                    <materialDesign:PackIcon Kind="RadioTower" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+                                    <Button x:Name="tcppingButton" Content="TCP PING" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="10,104,0,0" Height="26" Click="Button_Click" Background="{x:Null}" FontFamily="Calibri Light">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}"  Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                    <TextBox x:Name="papingipText" MaxLength="15" materialDesign:HintAssist.Hint="IP Address " Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Margin="10,38,0,0" FontFamily="Calibri Light" FontSize="14" CaretBrush="White" SelectionBrush="White"/>
+                                    <TextBox x:Name="papingportText" MaxLength="5" materialDesign:HintAssist.Hint="Port " Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" Margin="166,38,0,0" FontFamily="Calibri Light" FontSize="14" SelectionBrush="White" CaretBrush="White"/>
+                                    <Button x:Name="icmppingBtn" Content="ICMP PING" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="146,104,0,0" Height="26" Foreground="White" Background="{x:Null}" Click="icmppingBtn_Click" FontFamily="Calibri Light">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:Snackbar x:Name="stressersnackbar" Height="55" Margin="77,0,79.4,0.2" RenderTransformOrigin="0.5,0.5" Width="570" Background="#9F383838" Foreground="White">
+                            <materialDesign:SnackbarMessage Content="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </materialDesign:Snackbar>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+        Height="auto"
+        Width="auto">
+                            <materialDesign:PackIcon
+          Kind="Vpn"
+          Width="24"
+          Height="24"
+          HorizontalAlignment="Center" >
+                                <materialDesign:PackIcon.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                        <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </materialDesign:PackIcon.Foreground>
+                                <materialDesign:PackIcon.Background>
+                                    <ImageBrush/>
+                                </materialDesign:PackIcon.Background>
+                            </materialDesign:PackIcon>
+                            <TextBlock
+          Text="Tools"
+          HorizontalAlignment="Center" Foreground="#FFC8C8C8" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid Background="#FF232323">
+                        <Label Content="Coming Soon..." HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,10,10.4,10.2" Height="415" Width="706" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Calibri Light"/>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+        Height="auto"
+        Width="auto">
+                            <materialDesign:PackIcon
+          Kind="Money"
+          Width="24"
+          Height="24"
+          HorizontalAlignment="Center" >
+                                <materialDesign:PackIcon.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                        <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </materialDesign:PackIcon.Foreground>
+                            </materialDesign:PackIcon>
+                            <TextBlock
+          Text="Plans"
+          HorizontalAlignment="Center" Foreground="#FFC8C8C8" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid Background="#FF232323">
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.7}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="161" Width="237" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="161" VerticalAlignment="Top" Width="237" Margin="0,0,-0.2,-0.2">
+                                    <Label Content="BASIC PLAN" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16" Width="87"/>
+                                    <materialDesign:PackIcon Kind="Money" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="8,16" StartPoint="8,0" MappingMode="Absolute">
+                                                <GradientStop Color="#FF545454"/>
+                                                <GradientStop Color="#FF898989" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <Label Content="Concurrents: 1&#xA;Seconds: 300&#xA;Length: 1 Month&#xA;Price: $20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0" Width="208" Height="68" FontFamily="Calibri Light"/>
+                                    <Button x:Name="purchasebasicBtn" Content="PURCHASE" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Width="217" Margin="10,111,0,0" Background="{x:Null}" FontFamily="Calibri Light" Click="purchasebasicBtn_Click">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.0}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="494,10,0,0" VerticalAlignment="Top" Height="86" Width="222" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="222">
+                                    <Label Content="RENEW" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16" Width="72"/>
+                                    <materialDesign:PackIcon Kind="Autorenew" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+                                    <Button x:Name="renewBtn" Foreground="White" Content="DISCORD SERVER" HorizontalAlignment="Left" VerticalAlignment="Top" Width="202" Margin="10,38,0,0" FontFamily="Calibri Light" Background="{x:Null}" Click="renewBtn_Click">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.8}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="252,10,0,0" VerticalAlignment="Top" Height="161" Width="237" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="415" VerticalAlignment="Top" Width="237" Margin="0,0,-0.2,0">
+                                    <Label Content="VIP PLAN" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16" Width="144"/>
+                                    <materialDesign:PackIcon Kind="Money" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFC5952D" Offset="0.011"/>
+                                                <GradientStop Color="#FF997935" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <Label Content="Concurrents: 1&#xA;Seconds: 900&#xA;Length: 1 Month&#xA;Price: $30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0" Width="208" Height="68" FontFamily="Calibri Light"/>
+                                    <Button x:Name="purchasevipBtn" Foreground="White" Content="PURCHASE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="217" Margin="10,111,0,0" Background="{x:Null}" FontFamily="Calibri Light" Click="purchasevipBtn_Click">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.9}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="252,176,0,0" VerticalAlignment="Top" Height="161" Width="237" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="161" VerticalAlignment="Top" Width="237" Margin="0,0,-0.2,-0.2">
+                                    <Label Content="VIP PLAN" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16" Width="94"/>
+                                    <materialDesign:PackIcon Kind="Money" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
+                                        <materialDesign:PackIcon.Foreground>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFC5952D" Offset="0.011"/>
+                                                <GradientStop Color="#FF997935" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </materialDesign:PackIcon.Foreground>
+                                    </materialDesign:PackIcon>
+                                    <Label Content="Concurrents: 1&#xA;Seconds: 900&#xA;Length: 3 Months&#xA;Price: $60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0" Width="208" Height="68" FontFamily="Calibri Light"/>
+                                    <Button x:Name="purchasevip3Btn" Foreground="White" Content="PURCHASE" HorizontalAlignment="Left" VerticalAlignment="Top" Width="217" Margin="10,119,0,0" Background="{x:Null}" FontFamily="Calibri Light">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                    </Grid>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+        Height="auto"
+        Width="auto">
+                            <materialDesign:PackIcon
+          Kind="Discord"
+          Width="24"
+          Height="24"
+          HorizontalAlignment="Center" >
+                                <materialDesign:PackIcon.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                        <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </materialDesign:PackIcon.Foreground>
+                            </materialDesign:PackIcon>
+                            <TextBlock
+          Text="Discord"
+          HorizontalAlignment="Center" Foreground="#FFC8C8C8" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid Background="#FF232323">
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.8}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="281" Width="312" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Width="312" Margin="0,0,0,0.2">
+                                    <Label Content="DISCORD CONTACTS" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16" Width="142"/>
+                                    <materialDesign:PackIcon Kind="Discord" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+                                    <Image x:Name="ownerbannerImage" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="292" Margin="10,46,0,0"/>
+                                    <Image x:Name="devbannerImage" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="292" Margin="10,123,0,0"/>
+                                    <Image x:Name="adminbannerImage" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="292" Margin="10,200,0,-4.2"/>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.0}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="327,10,0,0" VerticalAlignment="Top" Height="116" Width="389" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Height="116" VerticalAlignment="Top" Width="389" Margin="0,0,-0.2,0">
+                                    <Label Content="MISC" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16" Width="142"/>
+                                    <materialDesign:PackIcon Kind="Package" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+                                    <Button x:Name="discordserverButton" Foreground="White" Content="DISCORD SERVER" HorizontalAlignment="Left" VerticalAlignment="Top" Width="182" Margin="10,74,0,0" Background="{x:Null}" FontFamily="Calibri Light" Click="discordserverButton_Click">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                    <Button x:Name="telegramButton" Foreground="White" Content="TELEGRAM" HorizontalAlignment="Left" VerticalAlignment="Top" Width="182" Margin="195,74,0,0" Background="{x:Null}" FontFamily="Calibri Light" Click="telegramButton_Click">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                    <Label Content="Discord RPC: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,42,0,0" Width="70" FontFamily="Calibri Light"/>
+                                    <ToggleButton x:Name="togglerpcToggleButton"
+  Style="{StaticResource MaterialDesignSwitchToggleButton}"
+  ToolTip="Toggle RPC" Margin="80,42,265,51" Checked="togglerpcToggleButton_Checked" Unchecked="togglerpcToggleButton_Unchecked" IsChecked="True" Width="44" Height="23" Background="White" />
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                    </Grid>
+                </TabItem>
+                <TabItem Foreground="#FFC8C8C8" Height="72">
+                    <TabItem.Header>
+                        <StackPanel
+        Height="auto"
+        Width="auto">
+                            <materialDesign:PackIcon x:Name="getRoblox"
+          Kind="Gear"
+          Width="24"
+          Height="24"
+          HorizontalAlignment="Center" >
+                                <materialDesign:PackIcon.Foreground>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}"/>
+                                        <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </materialDesign:PackIcon.Foreground>
+                            </materialDesign:PackIcon>
+                            <TextBlock
+          Text="Settings"
+          HorizontalAlignment="Center" Foreground="#FFC8C8C8" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid Background="#FF232323">
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:1.0}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="559,10,0,0" VerticalAlignment="Top" Height="136" Width="157" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Width="157" Margin="0,0,-0.2,-0.2">
+                                    <Label Content="CONFIG" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16" Width="69"/>
+                                    <materialDesign:PackIcon Kind="GearOutline" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+
+                                    <Label Content="Save Attack Log: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,42,0,0" Width="85" FontFamily="Calibri Light"/>
+                                    <ToggleButton x:Name="LogAttacksToggle"
+  Style="{StaticResource MaterialDesignSwitchToggleButton}"
+  ToolTip="Save Attack Logs To File" Margin="95,42,19,72.2" Checked="LogAttacksToggle_Checked" Unchecked="LogAttacksToggle_Unchecked" Foreground="White" Background="White"/>
+                                    <Label Content="Auto Login: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,70,0,0" Width="85" FontFamily="Calibri Light"/>
+                                    <ToggleButton x:Name="AutoLoginToggle"
+  Style="{StaticResource MaterialDesignSwitchToggleButton}"
+  ToolTip="Skip The Login Button" Margin="95,70,19,44.2" Checked="AutoLoginToggle_Checked" Unchecked="AutoLoginToggle_Unchecked" Background="White" />
+                                    <Label Content="Priority: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,97,0,0" Width="85" FontFamily="Calibri Light"/>
+                                    <ToggleButton x:Name="PriorityToggle"
+  Style="{StaticResource MaterialDesignSwitchToggleButton}"
+  ToolTip="Window Priority" Margin="95,98,19,17.2" Background="White" Checked="PriorityToggle_Checked" Unchecked="PriorityToggle_Unchecked"/>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.8}">
+                            <materialDesign:Card HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="311" Width="544" Background="#FF2B2B2B">
+                                <Grid HorizontalAlignment="Left" Width="544" Margin="0,0,0,-0.2">
+                                    <Label Content="THEME" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="26,6,0,0" FontWeight="Bold" FontFamily="Calibri Light" FontSize="16" Width="69"/>
+                                    <materialDesign:PackIcon Kind="Paintbrush" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="White"/>
+                                    <materialDesign:ColorPicker x:Name="color2Theme" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="276,76,0,0" Width="258" Height="175"/>
+                                    <materialDesign:ColorPicker x:Name="color1Theme" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,76,0,0" Height="175" Width="258"/>
+                                    <Label Content="Color One: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,49,0,0" Width="85" FontFamily="Calibri Light"/>
+                                    <Label Content="Color Two: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="276,49,0,0" Width="85" FontFamily="Calibri Light"/>
+                                    <Button x:Name="savethemeBtn" Foreground="White" Content="SAVE THEME" HorizontalAlignment="Left" VerticalAlignment="Top" Width="524" Margin="10,269,0,0" Click="savethemeBtn_Click" Background="{x:Null}" FontFamily="Calibri Light">
+                                        <Button.BorderBrush>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <LinearGradientBrush.RelativeTransform>
+                                                    <TransformGroup>
+                                                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="140" CenterY="0.5" CenterX="0.5"/>
+                                                        <TranslateTransform/>
+                                                    </TransformGroup>
+                                                </LinearGradientBrush.RelativeTransform>
+                                                <GradientStop Color="{Binding Color, ElementName=color2Theme, UpdateSourceTrigger=PropertyChanged}" Offset="0"/>
+                                                <GradientStop Color="{Binding Color, ElementName=color1Theme, UpdateSourceTrigger=PropertyChanged}" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.BorderBrush>
+                                    </Button>
+                                </Grid>
+                            </materialDesign:Card>
+                        </materialDesign:TransitioningContent>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <materialDesign:PopupBox
+      DockPanel.Dock="Right"
+      PlacementMode="BottomAndAlignRightEdges" Margin="665,0,0,434.8" Foreground="White" FontSize="10" Width="34" Visibility="Hidden">
+                <ListBox>
+                    <ListBoxItem
+          Content="Get Roblox Server" />
+                    <ListBoxItem
+          Content="Get Fortnite Server" />
+                    <ListBoxItem
+          Content="Quick VPN" />
+                </ListBox>
+            </materialDesign:PopupBox>
+            <Label Content="made by matias" HorizontalAlignment="Left" Margin="739,452,-60.6,-0.2" VerticalAlignment="Top" Width="120" Foreground="White" FontFamily="Candara Light" FontSize="7" FontWeight="Bold" RenderTransformOrigin="0.42,0.429"/>
+        </Grid>
+    </Border>
+</Window>

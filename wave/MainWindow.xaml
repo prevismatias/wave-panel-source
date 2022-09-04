@@ -1,0 +1,48 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wave"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="wave.MainWindow"
+        mc:Ignorable="d"
+        Title="WAVE - Login" Height="350" Width="320" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF232323" Loaded="Window_Loaded">
+    <Border BorderThickness="1" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="320">
+        <Border.BorderBrush>
+            <ImageBrush ImageSource="deps/fade.png"/>
+        </Border.BorderBrush>
+        <Grid Margin="0.2,0.2,-0.8,0.2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Image HorizontalAlignment="Left" Height="55" Margin="109,59,0,0" VerticalAlignment="Top" Width="100" Source="deps/logo.png"/>
+            <Rectangle x:Name="bar" Fill="#FF1E1E1E" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="318" MouseDown="bar_MouseDown"/>
+            <Label Content="WAVE SECURITY" HorizontalAlignment="Left" Margin="99,114,0,0" VerticalAlignment="Top" Width="120" Foreground="White" FontFamily="Candara Light" FontSize="16" FontWeight="Bold"/>
+            <Image HorizontalAlignment="Left" Height="12" Margin="10,12,0,0" VerticalAlignment="Top" Width="20" Source="deps/logo.png" RenderTransformOrigin="0.878,1.217"/>
+            <Button x:Name="exitLogin" HorizontalAlignment="Left" Margin="269,0,0,0" VerticalAlignment="Top" Width="49" Height="34" Foreground="White" BorderBrush="{x:Null}" Background="{x:Null}" Click="exitLogin_Click">
+                <materialDesign:PackIcon Kind="Close" Height="19" Width="19"/>
+            </Button>
+            <Button x:Name="minimizeLogin" HorizontalAlignment="Left" Margin="219,0,0,0" VerticalAlignment="Top" Width="50" Height="34" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="minimizeLogin_Click">
+                <materialDesign:PackIcon Kind="WindowMinimize" Height="19" Width="19"/>
+            </Button>
+            <TextBox x:Name="usernameText" materialDesign:HintAssist.Hint="Username" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="74,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Foreground="White" FontSize="14" FontFamily="Calibri Light" MaxLines="1"/>
+            <materialDesign:PackIcon Kind="User"  HorizontalAlignment="Left" Margin="51,173,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <PasswordBox x:Name="passwordText" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" HorizontalAlignment="Left" Margin="74,210,0,0" VerticalAlignment="Top" Width="205" Height="40" Foreground="White" FontFamily="Calibri Light" FontSize="14">
+            </PasswordBox>
+            <materialDesign:PackIcon Kind="Key" HorizontalAlignment="Left" Margin="51,223,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <Button x:Name="loginBtn" Content="LOGIN" HorizontalAlignment="Left" Margin="99,282,0,0" VerticalAlignment="Top" Width="120" Background="{x:Null}" Foreground="White" FontFamily="Calibri Light" Click="loginBtn_Click">
+                <Button.BorderBrush>
+                    <ImageBrush ImageSource="deps/fade.png"/>
+                </Button.BorderBrush>
+            </Button>
+            <CheckBox x:Name="savePass" Content="Save Password" HorizontalAlignment="Left" Margin="74,256,0,0" VerticalAlignment="Top" FontFamily="Calibri Light" Foreground="White" FontWeight="Bold" FontSize="10"/>
+            <Button x:Name="openReg" Content="register" HorizontalAlignment="Left" Margin="79,319,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" Height="20" FontSize="10" Click="openReg_Click"/>
+            <Button x:Name="openForgot" Content="forgot pass" HorizontalAlignment="Left" Margin="164,319,0,0" VerticalAlignment="Top" Width="77" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontFamily="Calibri Light" Height="20" FontSize="10" Click="openForgot_Click"/>
+            <Label Content="|" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="154,317,0,0"/>
+            <Label Content="made by matias" HorizontalAlignment="Left" Margin="259,332,-59.8,-0.2" VerticalAlignment="Top" Width="120" Foreground="White" FontFamily="Candara Light" FontSize="7" FontWeight="Bold" RenderTransformOrigin="0.42,0.429"/>
+        </Grid>
+    </Border>
+</Window>
